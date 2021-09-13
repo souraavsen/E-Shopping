@@ -229,35 +229,53 @@ const showProducts = (products) => {
     const div = document.createElement("div");
     div.classList.add("product");
 
-    // <p class='text-2xl font-semibold'>Total Rating: ${product.rating.count}</p>;
-
     // creating the card to hold product details
     div.innerHTML = `
     <div class="single-product">
       <div>
       <img class="product-image mx-auto my-10" src=${image}></img>
       </div>
-      <div class="card">
+      <div>
         <div>
-          <h3 class="h4 font-bold h-32">${product.title}</h3>
-          <p>Category: ${product.category}</p>
-          <h2 class="h4 font-semibold	text-blue-900">Price: $ ${product.price}</h2>
-          <p class="text-2xl font-semibold">Rating: ${product.rating.rate}<i class="fas fa-star text-yellow-400 px-2"></i>(${product.rating.count})</p>
-          
+          <h3 class="product_title h4 font-bold h-24" title="${
+            product.title
+          }">${product.title}</h3>
+        <div class="card">
+          <p class="text-2xl text-black font-semibold">Category: <span class="text-blue-700"> ${
+            product.category
+          } </span></p>
+          <h2 class="h4 text-black font-semibold">Price: <span class="text-blue-700">$${
+            product.price
+          } </span> </h2>
+          <div class="stars-outer">
+          <div id="star" class="stars-inner" style="width:${
+            (product.rating.rate / 5) * 100
+          }%" ></div>
+          </div>
+          <p class="text-2xl font-semibold">Rating: <span class="text-blue-700">${
+            product.rating.rate
+          } ( <i class="fas fa-user"></i> ${product.rating.count}) </span> </p>
+          </div>
         </div>
 
         <div class="mt-8">
-          <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-primary text-white font-semibold py-3 px-6 my-4 mx-2">Add To Cart</button>
-          <button id="details-btn" class="btn bg-yellow-300 text-black font-semibold py-3 px-6 my-4 mx-2">Details</button>
+          <button onclick="addToCart(${product.id},${
+      product.price
+    })" id="addToCart-btn" class="buy-now btn btn-primary text-white font-semibold py-3 px-6 my-4 mx-2 focus:outline-none"><i class="fas fa-cart-plus"></i> Add To Cart</button>
+          <button id="details-btn"  class="btn bg-yellow-300 text-black font-semibold py-3 px-6 my-4 mx-2 focus:outline-none" data-toggle="modal" data-target="#myModal"><i class="fas fa-info-circle"></i> Details</button>
         </div>
       </div>
     </div>
       `;
-
+    
     // product adding into the all-products
     document.getElementById("all-products").appendChild(div);
   }
 };
+
+
+
+
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
