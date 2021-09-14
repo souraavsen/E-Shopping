@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FakeStore</title>
+    <title>E-Shopping</title>
     <link rel="stylesheet" href="./css/style.css" />
     <!-- Latest compiled and minified CSS -->
     <link
@@ -35,12 +35,52 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
+
+    <link rel="shortcut icon" href="/images/images-eshop.png" type="image/x-icon">
   </head>
 
   <body>
-    <header></header>
+    <header>
+      <!-- Navbar  -->
+      <nav class="navbar navbar-fixed-top bg-primary py-4 px-24 mb-">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1"
+              aria-expanded="false"
+            >
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand text-3xl font-bold" href="#">E-Shopping</a>
+          </div>
 
-    <main class="main bg-gray-100">
+          <div
+            class="collapse navbar-collapse"
+            id="bs-example-navbar-collapse-1"
+          >
+            <ul class="nav navbar-nav">
+              <li><a href="#">Home</a></li>
+              <li>
+                <a href="#">All Product</a>
+              </li>
+              
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#"><i class="far fa-user-circle text-3xl"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="main bg-gray-100 mt-24">
       <div class="search-field">
         <div class="search-box w-1/4 mb-10 bg-white">
           <input
@@ -63,22 +103,60 @@
       </div>
 
       <!-- Modal -->
-
       <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
-          <!-- Modal content-->
+          <!-- Modal contents-->
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">
                 &times;
               </button>
-              <h4 class="modal-title">Modal Header</h4>
+              <h4 id="detail_title" class="modal-title h4"></h4>
             </div>
-            <div class="modal-body">
-              <p>Some text in the modal.</p>
+
+            <!-- Product Description in modal -->
+            <div class="modal-body flex">
+              <img src="" class="m-auto" id="detail_img" alt="" />
+              <div class="px-10 py-4">
+                <p class="pb-4 pt-12">
+                  <span class="font-bold h4">Description: <br /></span>
+                  <span id="detail_desc"></span>
+                </p>
+                <h3 class="font-bold h4">
+                  Price:
+                  <span class="font-semibold text-blue-800"
+                    >$<span id="detail_price"></span
+                  ></span>
+                </h3>
+                <h3 class="offer mt-16">
+                  Spend minimum of 5000Tk and get 20% OFF.
+                </h3>
+              </div>
+              <div class="details_rating">
+                <h4 class="h5 font-semibold">
+                  <span id="detail_rating"></span> <i class="fas fa-star"></i>
+                </h4>
+              </div>
             </div>
+
+            <!-- Modal footer -->
             <div class="modal-footer">
-              <button type="button" class="btn btn-dang" data-dismiss="modal">
+              <button
+                type="button"
+                onclick="close"
+                class="
+                  btn btn-danger
+                  py-3
+                  transition
+                  delay-150
+                  duration-300
+                  ease-in-out
+                  text-white
+                  font-semibold
+                  focus:outline-none
+                "
+                data-dismiss="modal"
+              >
                 Close
               </button>
             </div>
@@ -98,8 +176,6 @@
                 <tr>
                   <th scope="col"></th>
                   <th scope="col"></th>
-                  <!-- <th scope="col"></th>
-                <th scope="col"></th> -->
                 </tr>
               </thead>
               <tbody>
@@ -108,41 +184,44 @@
                   <td>
                     <span id="total-Products" class="font-semibold">0</span>
                   </td>
-                  <!-- <td></td>
-                <td></td> -->
                 </tr>
                 <tr>
                   <th>Price:</th>
                   <td>$ <span id="price" class="font-semibold">0</span></td>
-                  <!-- <td></td>
-                <td></td> -->
                 </tr>
                 <tr>
                   <th>Delivery-Charge:</th>
                   <td>
                     $ <span id="delivery-charge" class="font-semibold">20</span>
                   </td>
-                  <!-- <td></td>
-                <td></td> -->
                 </tr>
                 <tr>
                   <th>Total-Tax:</th>
                   <td>$ <span id="total-tax" class="font-semibold">0</span></td>
-                  <!-- <td></td>
-                <td></td> -->
                 </tr>
                 <tr>
                   <th scope="row">Total</th>
                   <td colspan="2">
                     $ <span id="total" class="font-semibold">0</span>
                   </td>
-                  <!-- <td></td> -->
                 </tr>
               </tbody>
             </table>
             <div class="parces text-center">
               <button
-                class="btn btn-primary text-center py-3 px-6 my-2 font-semibold"
+                class="
+                  btn btn-primary
+                  text-center
+                  py-3
+                  px-6
+                  my-2
+                  transition
+                  delay-150
+                  duration-300
+                  ease-in-out
+                  text-white
+                  font-semibold
+                "
               >
                 Buy Now
               </button>
@@ -153,7 +232,7 @@
     </main>
     <footer></footer>
 
-    <!-- add javascript  file  -->
+    <!--  javascript  files  -->
     <script src="./js/app.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

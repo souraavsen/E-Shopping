@@ -14,7 +14,6 @@ body {
 }
 .search-box {
   border: 1px solid rgb(3, 118, 211);
-  /* width: 340px; */
   display: flex;
   justify-content: space-between;
   border-radius: 25px;
@@ -26,7 +25,6 @@ body {
 .search-button {
   padding: 0 20px;
   border-radius: 25px;
-  /* margin-left: 65px; */
 }
 
 .search-button:focus {
@@ -34,7 +32,6 @@ body {
   outline: none !important;
   border: none !important;
   border-radius: 25px;
-  /* margin-left: 65px; */
 }
 
 #all-products {
@@ -48,12 +45,30 @@ body {
   justify-content: center;
 }
 
-/* .card{
-  width: 100%;
-  padding: 20px;
-  background-color: #fce685;
-  clip-path: polygon(0 100%, 99% 100%, 100% 9%, 27% 9%, 8% 1%, 12% 9%, 0 9%);
-} */
+.details_rating{
+  position: absolute;
+  padding: 10px 14px 18px 14px;
+  top: 0%;
+  left: 87%;
+  background-color: rgb(247, 227, 48);
+  clip-path: polygon(14% 0, 97% 0, 84% 41%, 87% 100%, 44% 81%, 8% 100%, 5% 42%);
+
+}
+
+#detail_img{
+  height:250px; 
+  width:280px;
+}
+
+.offer{
+  widows: 100%;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 10px 50px;
+  background-color: rgb(255, 99, 72);
+  clip-path: polygon(88% 0, 100% 50%, 88% 100%, 0% 100%, 6% 50%, 0% 0%);
+}
 
 .stars-outer {
   position: relative;
@@ -92,8 +107,8 @@ body {
 }
 
 .single-product {
-  height: 470px;
-  width: 322px;
+  height: 72vh;
+  width: 48vh;
   padding: 10px;
   transition: 0.6s;
   border-radius: 10px;

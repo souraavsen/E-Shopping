@@ -1,11 +1,4 @@
-// const loadProducts = () => {
-//   const url = `https://fakestoreapi.com/products`;
-//   fetch(url)
-//     .then((response) => response.json())
-//     .then((data) => showProducts(data));
-// };
-
-
+// All product's object
 const loadProducts = () => {
   const data = [
     {
@@ -221,7 +214,6 @@ const loadProducts = () => {
 
 // show all product in UI
 const showProducts = (products) => {
-  console.log(products);
 
   const allProducts = products.map((pd) => pd);
   for (const product of allProducts) {
@@ -252,17 +244,20 @@ const showProducts = (products) => {
             (product.rating.rate / 5) * 100
           }%" ></div>
           </div>
-          <p class="text-2xl font-semibold">Rating: <span class="text-blue-700">${
+          <p class="text-2xl pt-4 font-semibold">Rating: <span class="text-blue-700">${
             product.rating.rate
-          } ( <i class="fas fa-user"></i> ${product.rating.count}) </span> </p>
+          } ( <i class="fas fa-user"></i> ${product.rating.count} ) </span> </p>
           </div>
         </div>
 
-        <div class="mt-8">
+        <div class="mt-4">
           <button onclick="addToCart(${product.id},${
       product.price
-    })" id="addToCart-btn" class="buy-now btn btn-primary text-white font-semibold py-3 px-6 my-4 mx-2 focus:outline-none"><i class="fas fa-cart-plus"></i> Add To Cart</button>
-          <button id="details-btn"  class="btn bg-yellow-300 text-black font-semibold py-3 px-6 my-4 mx-2 focus:outline-none" data-toggle="modal" data-target="#myModal"><i class="fas fa-info-circle"></i> Details</button>
+    })" id="addToCart-btn" class="buy-now btn btn-primary transition delay-150 duration-300 ease-in-out text-white font-semibold py-3 px-6 my-4 mx-2 focus:outline-none"><i class="fas fa-cart-plus"></i> Add To Cart</button>
+    
+          <button id="details-btn"  class="btn bg-yellow-300 transition delay-150 duration-300 ease-in-out text-black font-semibold py-3 px-6 my-4 mx-2 focus:outline-none hover:bg-yellow-400" data-toggle="modal" data-target="#myModal" onclick="showDetails(${
+            product.id
+          })"><i class="fas fa-info-circle"></i> Details</button>
         </div>
       </div>
     </div>
@@ -274,8 +269,23 @@ const showProducts = (products) => {
 };
 
 
+const showDetails = (id) => {
+    fetch(`https://fakestoreapi.com/products/${id}`)
+      .then((response) => response.json())
+      .then((data) => show(data));
+};
 
 
+// Injecting data in to Modal
+const show = (data) => {
+  document.getElementById("detail_img").setAttribute("src",data.image); 
+  document.getElementById("detail_title").innerText=data.title 
+  document.getElementById("detail_desc").innerText = data.description; 
+  document.getElementById("detail_price").innerText = data.price; 
+  document.getElementById("detail_rating").innerText = data.rating.rate;
+}
+
+// Adding item to the cart
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
@@ -303,8 +313,8 @@ const updatePrice = (id, value) => {
 
 // set innerText function
 const setInnerText = (id, value) => {
-  // document.getElementById(id).innerText = value.toFixed(2);
-  document.getElementById(id).innerText = Math.round(value);
+  document.getElementById(id).innerText = value.toFixed(2);
+  // document.getElementById(id).innerText = Math.round(value);
 };
 
 // update delivery charge and total Tax
