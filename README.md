@@ -1,2 +1,2 @@
-# ranga-store-fix-souraavsen1
-ranga-store-fix-souraavsen1 created by GitHub Classroom
+# E-Shopping 
+A landing page of online based shopping plartform
